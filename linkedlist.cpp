@@ -43,6 +43,25 @@ int middle(Node* head){
     return slow->data;
 
 }
+ Node* deleteMiddle(Node* head) {
+      Node* slow=head;
+      Node* fast=head;
+      Node* prev=NULL;
+
+      if(!head->next){
+          return NULL;
+      }
+      while(fast!=NULL && fast->next!=NULL){
+            prev=slow;
+            fast=fast->next->next;
+            slow=slow->next;
+            
+      }
+      prev->next=slow->next;
+            slow->next=NULL;
+            delete(slow);
+      return head;
+    }
 
 bool circular(Node* &head){
    Node*temp=head;
