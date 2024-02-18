@@ -44,6 +44,17 @@ int middle(Node* head){
 
 }
 
+bool circular(Node* &head){
+   Node*temp=head;
+   while(temp!=NULL){
+    temp=temp->next;
+    if(temp==head){
+        return true;
+    }
+   }
+   return false;
+}
+
 void reverse(Node* &head){
     Node* temp=head;
     Node* prev=NULL;
@@ -74,5 +85,11 @@ int main(){
     reverse(head);
     print(head);
     cout<<middle(head)<<endl;
+    if(circular(head)){
+        cout<<"yes"<<endl;
+    }
+    else{
+        cout<<"No"<<endl;
+    }
 
 }
