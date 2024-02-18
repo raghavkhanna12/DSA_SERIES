@@ -31,6 +31,21 @@ void deletenode(Node* head,int position){
     curr->next=NULL;
     delete(curr);
 }
+
+void reverse(Node* &head){
+    Node* temp=head;
+    Node* prev=NULL;
+    Node* curr=NULL;
+    while(temp!=NULL){
+        curr=temp->next;  
+        temp->next=prev;
+        prev=temp;
+        temp=curr;
+  }
+      head=prev;
+
+}
+
 void print(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
@@ -43,7 +58,8 @@ int main(){
     Node* head=new Node(10);
     insert(head,1,20);
     insert(head,2,30);
-    deletenode(head,1);
+   // deletenode(head,1);
+    reverse(head);
     print(head);
 
 }
