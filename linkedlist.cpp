@@ -87,6 +87,25 @@ void reverse(Node* &head){
       head=prev;
 
 }
+ Node *detectCycle(Node* head){
+   
+       Node* slow=head;
+       Node* fast=head;
+
+       while(fast!=NULL && fast->next!=NULL){
+          fast=fast->next->next;
+          slow=slow->next;
+          if(fast==slow){
+               slow=head;
+               while(slow!=fast){
+                   slow=slow->next;
+                   fast=fast->next;
+               }
+               return slow;
+          }
+       }
+       return NULL;
+          }
 
 void print(Node* head){
     while(head!=NULL){
