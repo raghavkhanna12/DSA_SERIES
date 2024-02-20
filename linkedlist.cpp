@@ -87,6 +87,36 @@ void reverse(Node* &head){
       head=prev;
 
 }
+void print(Node* head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head=head->next;  
+    }
+    cout<<endl;
+}
+bool isPalindrome(Node* head) {
+        Node* temp=head;
+        vector<int>v;
+        vector<int>v1;
+        while(temp!=NULL){
+            v.push_back(temp->data);
+            temp=temp->next;
+        }
+        reverse(head);
+        Node* temp1=head;
+        while(temp1!=NULL){
+            v1.push_back(temp1->data);
+            temp1=temp1->next;
+        }
+        cout<<endl;
+        for(int i=0;i<v.size();i++){
+                if(v[i]!=v1[i]){
+                   return false;
+                }
+        }
+        return true;
+      
+    }
  Node *detectCycle(Node* head){
    
        Node* slow=head;
@@ -107,27 +137,27 @@ void reverse(Node* &head){
        return NULL;
           }
 
-void print(Node* head){
-    while(head!=NULL){
-        cout<<head->data<<" ";
-        head=head->next;  
-    }
-    cout<<endl;
-}
+
 
 int main(){
     Node* head=new Node(10);
     insert(head,1,20);
     insert(head,2,30);
-   // deletenode(head,1);
-    reverse(head);
-    print(head);
-    cout<<middle(head)<<endl;
-    if(circular(head)){
+    // deletenode(head,1);
+    // reverse(head);
+    // print(head);
+    // cout<<middle(head)<<endl;
+    // if(circular(head)){
+    //     cout<<"yes"<<endl;
+    // }
+    // else{
+    //     cout<<"No"<<endl;
+    // }
+    if(isPalindrome(head)){
         cout<<"yes"<<endl;
     }
     else{
-        cout<<"No"<<endl;
+        cout<<"no"<<endl;
     }
 
 }
