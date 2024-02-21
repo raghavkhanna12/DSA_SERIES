@@ -27,3 +27,22 @@ Node* buildtree(Node* root){
 
     return root;
 }
+
+Node* LevelOrderTraversal(Node* root,int data){
+    root=new Node(data);
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty()){
+        Node* frontNode= q.front();
+        q.pop();
+        cout<<frontNode->data<<" ";
+        if(frontNode->left){
+            q.push(frontNode->left);
+        }
+        if(frontNode->right){
+            q.push(frontNode->right);
+        }
+    }
+    return root;
+
+}
