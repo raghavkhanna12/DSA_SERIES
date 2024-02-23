@@ -10,8 +10,9 @@ int main(){
         }
     }
 
-    int max=0;
+
     for(int i=0;i<3;i++){
+            int max=0;
         for(int j=0;j<3;j++){
             if(max<arr[i][j]){
                 max=arr[i][j];
