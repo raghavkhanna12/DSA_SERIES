@@ -60,7 +60,8 @@ Node* DeleteFromBST(Node* root,int x){
          if(root->left!=NULL && root->right!=NULL){
             int mini=minvalue(root->right)->data;
             root->data=mini;
-            DeleteFromBST(root->right,x);
+            root->right=DeleteFromBST(root->right,mini);
+            return root;
          }
     }
 
