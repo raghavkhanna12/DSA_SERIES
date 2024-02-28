@@ -113,5 +113,6 @@ int main(){
      for(int i=1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
-   // h.print();
+    cout<<endl;
+    h.print();
 }
