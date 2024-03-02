@@ -28,6 +28,16 @@ class Graph{
             }
         }
     }
+    void dfs(unordered_map<int,bool>&visited,vector<int>&ans,vector<int>*adj,int node){
+        ans.push_back(node);
+        visited[node]=true;
+        
+        for(auto i:adj[node]){
+            if(!visited[i]){
+                dfs(visited,ans,adj,i);
+            }
+        }
+    }
 
     void print(){
         for(auto i:adj){
