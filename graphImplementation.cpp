@@ -38,6 +38,29 @@ class Graph{
             }
         }
     }
+    bool cycle(unordered_map<int,bool>&visited, vector<int>*adj, int src) {
+    queue<int> q;
+    unordered_map<int,int> parent;
+    parent[src] = -1;
+    visited[src] = true;
+    q.push(src);
+
+    while (!q.empty()) {
+        int frontNode = q.front();
+        q.pop();
+        for (auto neighbour : adj[frontNode]) {
+            if (visited[neighbour] && neighbour != parent[frontNode]) {
+                return true;
+            } else if (!visited[neighbour]) {
+                q.push(neighbour);
+                visited[neighbour] = true;
+                parent[neighbour] = frontNode;
+            }
+        }
+    }
+    return false;
+}
+
 
     void print(){
         for(auto i:adj){
