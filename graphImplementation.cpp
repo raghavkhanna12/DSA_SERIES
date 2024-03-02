@@ -11,6 +11,23 @@ class Graph{
         }
 
     }
+       void bfs(unordered_map<int,bool>&visited,vector<int>&ans,vector<int>*adj,int node){
+        queue<int>q;
+        q.push(node);
+        visited[node]=1;
+        while(!q.empty()){
+            int frontNode=q.front();
+            q.pop();
+            visited[frontNode]=1;
+            ans.push_back(frontNode);
+            for(auto i:adj[frontNode]){
+                if(!visited[i]){
+                    q.push(i);
+                    visited[i]=1;
+                }
+            }
+        }
+    }
 
     void print(){
         for(auto i:adj){

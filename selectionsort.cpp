@@ -15,8 +15,8 @@ int main(){
             if(arr[j]<arr[min]){
                 min=j;
             }
-            swap(arr[min],arr[i]);
        }
+        swap(arr[min],arr[i]);
     }
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
