@@ -38,7 +38,7 @@ class Graph{
             }
         }
     }
-    bool cycle(unordered_map<int,bool>&visited, vector<int>*adj, int src) {
+    bool cyclebfs(unordered_map<int,bool>&visited, vector<int>*adj, int src) {
     queue<int> q;
     unordered_map<int,int> parent;
     parent[src] = -1;
@@ -59,6 +59,23 @@ class Graph{
         }
     }
     return false;
+}
+bool cycledfs(unordered_map<int,bool>&visited,vector<int>* adj,int node,int parent){
+    visited[node]=true;
+    
+    for(auto neighbour:adj[node]){
+        if(!visited[neighbour]){
+            bool ans= cycledfs(visited,adj,neighbour,node);
+            if(ans){
+                return true;
+            }
+        }
+        else if(neighbour!=parent){
+            return true;
+        }
+    }
+    return false;
+    
 }
 
 
