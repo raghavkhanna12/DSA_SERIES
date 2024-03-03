@@ -77,6 +77,26 @@ bool cycledfs(unordered_map<int,bool>&visited,vector<int>* adj,int node,int pare
     return false;
     
 }
+ // Function to detect cycle in a directed graph.
+    bool cycledfs(unordered_map<int,bool>&visited,unordered_map<int,bool>&dfsvisited,vector<int>*adj,int node){
+        visited[node]=true;
+        dfsvisited[node]=true;
+        
+        for(auto neighbour:adj[node]){
+            if(!visited[neighbour]){
+                bool ans=cycledfs(visited,dfsvisited,adj,neighbour);
+                if(ans==1){
+                    return true;
+                }
+            }
+            else if(dfsvisited[neighbour]){
+                return true;
+            }
+        }
+        dfsvisited[node]=false;
+        return false;
+    }
+    
 
 
     void print(){
