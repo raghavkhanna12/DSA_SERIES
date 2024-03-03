@@ -95,7 +95,38 @@ bool cycledfs(unordered_map<int,bool>&visited,vector<int>* adj,int node,int pare
         }
         dfsvisited[node]=false;
         return false;
+
+
     }
+    void toposortdfs(unordered_map<int,bool>&visited,stack<int>&s,vector<int>*adj,int node){
+	    visited[node]=true;
+	    
+	    for(auto neighbour:adj[node]){
+	        if(!visited[neighbour]){
+	            toposortdfs(visited,s,adj,neighbour);
+	        }
+	    }
+	    s.push(node);
+	}
+	
+	//common to all the function a little changes is required
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    unordered_map<int,bool>visited;
+	    stack<int>s;
+	    vector<int>ans;
+	    for(int i=0;i<V;i++){
+	        if(!visited[i]){
+	            toposortdfs(visited,s,adj,i);
+	        }
+	    }
+	    
+	    while(!s.empty()){
+	        ans.push_back(s.top());
+	        s.pop();
+	    }
+	    return ans;
+	}
     
 
 
