@@ -19,6 +19,8 @@ void insert(Node* head,int position,int d){
     Node* curr=new Node(d);
     curr->next=temp->next;
     temp->next=curr;
+    curr->next=temp;
+    temp=curr;
 
 }
 void deletenode(Node* head,int position){
@@ -36,7 +38,7 @@ int middle(Node* head){
     Node* fast=head;
     Node* slow=head;
 
-    while(fast->next!=NULL && fast->next->next!=NULL){
+    while(fast!=NULL && fast->next!=NULL){
         fast=fast->next->next;
         slow=slow->next;
     }
@@ -145,7 +147,7 @@ int main(){
     insert(head,2,30);
     // deletenode(head,1);
     // reverse(head);
-    // print(head);
+     print(head);
     // cout<<middle(head)<<endl;
     // if(circular(head)){
     //     cout<<"yes"<<endl;
@@ -153,11 +155,11 @@ int main(){
     // else{
     //     cout<<"No"<<endl;
     // }
-    if(isPalindrome(head)){
-        cout<<"yes"<<endl;
-    }
-    else{
-        cout<<"no"<<endl;
-    }
+    // if(isPalindrome(head)){
+    //     cout<<"yes"<<endl;
+    // }
+    // else{
+    //     cout<<"no"<<endl;
+    // }
 
 }
